@@ -1,0 +1,9 @@
+scheduleConfig:
+  instanceName: SimpleAgentServer
+  threadCount: 3
+  intervalInSeconds: 3
+
+jobs:
+  demo: com.ixingji.agent.server.job.DemoJob
+
+actions:
