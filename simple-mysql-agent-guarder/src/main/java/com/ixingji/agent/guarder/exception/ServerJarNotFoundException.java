@@ -6,4 +6,8 @@ public class ServerJarNotFoundException extends Exception {
         super(cause);
     }
 
+    public ServerJarNotFoundException(String message) {
+        super(message);
+    }
+
 }

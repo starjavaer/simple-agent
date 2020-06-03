@@ -3,7 +3,7 @@ package com.ixingji.agent.guarder.util;
 import com.ixingji.agent.guarder.config.AgentGuarderConfig;
 import com.ixingji.agent.guarder.constant.AgentGuarderConstants;
 import com.ixingji.agent.guarder.exception.AuthCheckFailedException;
-import com.ixingji.agent.guarder.model.AgentFileContent;
+import com.ixingji.agent.guarder.model.AgentFile;
 import com.ixingji.agent.server.util.AssertUtils;
 import com.ixingji.agent.server.util.CmdUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -80,7 +80,7 @@ public class AgentGuarderUtils {
         guarderConfig.setScripts(scripts);
     }
 
-    public static int randomAvaliablePort() throws IOException {
+    public static int randomAvailablePort() throws IOException {
         AgentGuarderConfig agentGuarderConfig = AgentGuarderConfig.getInstance();
         int fromPort = agentGuarderConfig.getServerPortFrom();
         int toPort = agentGuarderConfig.getServerPortTo();
@@ -88,7 +88,7 @@ public class AgentGuarderUtils {
         if (!isLocalUsing(randomPort)) {
             return randomPort;
         }
-        return randomAvaliablePort();
+        return randomAvailablePort();
     }
 
     public static String getServerJarPath(String version) {
@@ -141,10 +141,10 @@ public class AgentGuarderUtils {
                 && isLocalUsing(dbPort);
     }
 
-    public static void createAgentFile(int dbPort, AgentFileContent agentFileContent) throws IOException {
+    public static void createAgentFile(int dbPort, AgentFile agentFile) throws IOException {
         String dbServerDir = getDbServerDir(dbPort);
         try (FileWriter fileWriter = new FileWriter(new File(dbServerDir, AgentGuarderConstants.AGENT_FILE_NAME))) {
-            fileWriter.write(JSONUtils.toStr(agentFileContent));
+            fileWriter.write(JSONUtils.toStr(agentFile));
             fileWriter.flush();
         }
     }
@@ -190,6 +190,10 @@ public class AgentGuarderUtils {
                 connection.close();
             }
         }
+    }
+
+    public static void deleteAgentZKNode(String zkUrl, String dbName) {
+
     }
 
 }

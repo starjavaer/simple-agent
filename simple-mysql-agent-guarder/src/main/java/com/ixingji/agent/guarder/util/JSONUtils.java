@@ -30,7 +30,7 @@ public class JSONUtils {
         return builder.toString();
     }
 
-    public static byte[] toStringBytes(Object obj) {
+    public static byte[] toStrBytes(Object obj) {
         return toStr(obj).getBytes(StandardCharsets.UTF_8);
     }
 

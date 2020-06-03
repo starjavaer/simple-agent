@@ -1,11 +1,10 @@
 package com.ixingji.agent.guarder.util;
 
 import org.apache.commons.lang3.StringUtils;
-import org.omg.CORBA.UNKNOWN;
 
 public class OSUtils {
 
-    enum OS {
+    public enum OS {
         UNKNOWN,
         WINDOWS,
         LINUX;
