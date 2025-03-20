@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.ixingji.agent.grpc";
+option java_outer_classname = "ActorProto";
+option objc_class_prefix = "Act";
+
+service Actor {
+    rpc doAction (ActionRequest) returns (ActionResponse) {}
+}
+
+message ActionRequest {
+    string secretId = 1;
+    string action = 2;
+    string data = 3;
+}
+
+message ActionResponse {
+    int32 code = 1;
+    string message = 2;
+    string data = 3;
+}
